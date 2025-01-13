@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Matematika Kelas 4</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .question {
+            margin: 20px 0;
+        }
+
+        .question p {
+            font-size: 18px;
+        }
+
+        .options {
+            margin-top: 10px;
+        }
+
+        .options label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background: #FF1616;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #FF1616;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .correct {
+            color: #28a745;
+        }
+
+        .wrong {
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quiz Matematika Kelas 4</h1>
+        <form id="quizForm">
+            <div class="question">
+                <p>1. Berapakah hasil dari 12 × 3?</p>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="30"> 30</label>
+                    <label><input type="radio" name="q1" value="36"> 36</label>
+                    <label><input type="radio" name="q1" value="40"> 40</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>2. Sebuah persegi memiliki panjang sisi 7 cm. Berapakah luasnya?</p>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="49"> 49 cm²</label>
+                    <label><input type="radio" name="q2" value="56"> 56 cm²</label>
+                    <label><input type="radio" name="q2" value="42"> 42 cm²</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>3. Jika Ani memiliki 15 apel dan memberikan 5 kepada temannya, berapa apel yang tersisa?</p>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="10"> 10</label>
+                    <label><input type="radio" name="q3" value="12"> 12</label>
+                    <label><input type="radio" name="q3" value="8"> 8</label>
+                </div>
+            </div>
+
+            <button type="button" onclick="submitQuiz()">Kirim Jawaban</button>
+        </form>
+
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function submitQuiz() {
+            const correctAnswers = {
+                q1: "36",
+                q2: "49",
+                q3: "10"
+            };
+
+            let score = 0;
+            const form = document.getElementById('quizForm');
+            const formData = new FormData(form);
+
+            for (const [question, answer] of Object.entries(correctAnswers)) {
+                if (formData.get(question) === answer) {
+                    score++;
+                }
+            }
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `Kamu menjawab <span class="correct">${score}</span> dari <span class="wrong">3</span> pertanyaan dengan benar.`;
+        }
+    </script>
+</body>
+</html>

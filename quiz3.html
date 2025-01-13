@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Matematika Kelas 4</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .question {
+            margin: 20px 0;
+        }
+
+        .question p {
+            font-size: 18px;
+        }
+
+        .options {
+            margin-top: 10px;
+        }
+
+        .options label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background: #FF1616;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #FF1616;
+        }
+
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .correct {
+            color: #28a745;
+        }
+
+        .wrong {
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quiz Matematika Kelas 6</h1>
+        <form id="quizForm">
+            <div class="question">
+                <p>1. Usia Ani, Budi, dan Citra mengikuti perbandingan 3 : 5 : 7. Jika total usia mereka adalah 75 tahun, berapa usia masing-masing?</p>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="Ani = 15 tahun, Budi = 25 tahun, Citra = 35 tahun"> Ani = 15 tahun, Budi = 25 tahun, Citra = 35 tahun</label>
+                    <label><input type="radio" name="q1" value="Ani = 10 tahun, Budi = 20 tahun, Citra = 30 tahun"> Ani = 10 tahun, Budi = 20 tahun, Citra = 30 tahun</label>
+                    <label><input type="radio" name="q1" value=" Ani = 15 tahun, Budi = 35 tahun, Citra = 45 tahun"> Ani = 15 tahun, Budi = 35 tahun, Citra = 45 tahun</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>2.Sebuah balok memiliki panjang 12 cm, lebar 8 cm, dan tinggi 6 cm. Balok tersebut dipotong menjadi kubus-kubus kecil dengan panjang sisi 2 cm.
+                    Berapa banyak kubus kecil yang dihasilkan?</p>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="49"> 49 kubus</label>
+                    <label><input type="radio" name="q2" value="64"> 64 kubus</label>
+                    <label><input type="radio" name="q2" value="72"> 72 kubus</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <p>3.Dina memiliki pita sepanjang 4 2/5 meter. Ia memotong pita tersebut menjadi 3 bagian dengan panjang masing-masing 1 1/3 meter.
+                    Berapa sisa panjang pita yang dimiliki Dina?</p>
+                <div class="options">
+                    <label><input type="radio" name="q3" value="3/5"> 3/5 meter</label>
+                    <label><input type="radio" name="q3" value="2/5"> 2/5 meter</label>
+                    <label><input type="radio" name="q3" value="1/5"> 1/5 meter</label>
+                </div>
+            </div>
+
+            <button type="button" onclick="submitQuiz()">Kirim Jawaban</button>
+        </form>
+
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function submitQuiz() {
+            const correctAnswers = {
+                q1: "Ani = 15 tahun, Budi = 25 tahun, Citra = 35 tahun",
+                q2: "72",
+                q3: "2/5"
+            };
+
+            let score = 0;
+            const form = document.getElementById('quizForm');
+            const formData = new FormData(form);
+
+            for (const [question, answer] of Object.entries(correctAnswers)) {
+                if (formData.get(question) === answer) {
+                    score++;
+                }
+            }
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `Kamu menjawab <span class="correct">${score}</span> dari <span class="wrong">3</span> pertanyaan dengan benar.`;
+        }
+    </script>
+</body>
+</html>
+
